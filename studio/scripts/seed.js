@@ -20,17 +20,18 @@ const defaultSettings = {
     { _key: "t2", name: "After Effects", iconSlug: "aftereffects", color: "#CF96FD" },
     { _key: "t3", name: "Photoshop", iconSlug: "photoshop", color: "#31A8FF" },
     { _key: "t4", name: "ChatGPT", iconSlug: "chatgpt", color: "#74AA9C" },
-    { _key: "t5", name: "Higgsfield AI", iconSlug: "higgsfield", color: "#FF6B2C" },
-    { _key: "t6", name: "Runway", iconSlug: "runway", color: "#ffffff" },
-    { _key: "t7", name: "Canva", iconSlug: "canva", color: "#00C4CC" },
+    { _key: "t5", name: "Claude", iconSlug: "claude", color: "#D97757" },
+    { _key: "t6", name: "Higgsfield AI", iconSlug: "higgsfield", color: "#D1FE17" },
+    { _key: "t7", name: "Runway", iconSlug: "runway", color: "#ffffff" },
+    { _key: "t8", name: "Canva", iconSlug: "canva", color: "#00C4CC" },
   ],
   contactHeading: "Ready to",
   contactHighlight: "create?",
   contactLead:
     "Let's turn your ideas into compelling visual stories. Reach out via email or schedule a quick intro call.",
-  email: "vaishnaviss2026@gmail.com",
+  email: "vaishnavishrivastava41@gmail.com",
   whatsapp: "919981783744",
-  calLink: "https://calendly.com",
+  calLink: "",
 };
 
 const defaultProjects = [

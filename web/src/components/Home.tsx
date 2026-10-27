@@ -3,7 +3,7 @@
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
-import { Video, Film, Sparkles, Mail, ArrowRight } from "lucide-react";
+import { Video, Film, Sparkles, Mail, MessageCircle, ArrowRight } from "lucide-react";
 import type { SiteContent } from "@/lib/content";
 import { BlurText } from "./BlurText";
 import { Marquee } from "./Marquee";
@@ -151,14 +151,10 @@ export function Home({ content }: { content: SiteContent }) {
 
       {/* WORK */}
       <div id="work">
-        <div className="container" style={{ paddingTop: "2rem" }}>
-          <h2 className="section-title tools-heading">Tools I use on a daily basis</h2>
-        </div>
         <Marquee tools={tools} />
 
         <section className="section container">
           <h2 className="section-title">Motion Graphics</h2>
-          <p className="section-subtitle">Dynamic 2D/3D animations, title sequences, and VFX branding.</p>
           <MotionCarousel items={projects.motion} />
         </section>
 
@@ -243,20 +239,16 @@ export function Home({ content }: { content: SiteContent }) {
       </section>
 
       {/* CONTACT */}
-      <section
-        id="contact"
-        className="section container contact-section"
-        style={{ textAlign: "center", padding: "8rem 0 10rem" }}
-      >
+      <section id="contact" className="section container contact-section">
         <h2 className="section-title contact-title">
           {contact.heading} <span className="highlight">{contact.highlight}</span>
         </h2>
         {contact.lead && (
-          <p className="section-subtitle" style={{ margin: "1.5rem auto 0" }}>
+          <p className="section-subtitle contact-subtitle">
             {contact.lead}
           </p>
         )}
-        <div style={{ width: "100%", maxWidth: "520px", height: "260px", margin: "2rem auto 0" }}>
+        <div style={{ width: "100%", maxWidth: "520px", height: "230px", margin: "1.5rem auto 0", display: "flex", justifyContent: "center", alignItems: "center" }}>
           <FlyingButton
             theme="dark"
             size="large"
@@ -264,27 +256,34 @@ export function Home({ content }: { content: SiteContent }) {
             thrusters={true}
             trigger="hover"
             carryCursor={true}
-            altitude={180}
+            altitude={170}
             thrustColor="#E33A24"
             smokeColor="#f4f4f5"
             buttonColor="#E33A24"
             textColor="#ffffff"
             onClick={() => {
-              if (contact.calLink) {
-                window.open(contact.calLink, "_blank");
-              } else {
-                window.location.href = `mailto:${contact.email}`;
-              }
+              const phone = (contact.whatsapp || "919981783744").replace(/[^0-9]/g, "");
+              const whatsappUrl = `https://wa.me/${phone}?text=Hi%20Vaishnavi,%20I%20saw%20your%20portfolio%20and%20would%20love%20to%20work%20together!`;
+              window.open(whatsappUrl, "_blank");
             }}
           >
-            <span style={{ display: "inline-flex", alignItems: "center", gap: "0.6rem" }}>
-              <Mail size={18} /> Ready to Connect • Book a Call
+            <span style={{ display: "inline-flex", alignItems: "center", gap: "0.65rem", fontWeight: 700 }}>
+              <MessageCircle size={19} /> Ready to Connect • Chat on WhatsApp
             </span>
           </FlyingButton>
         </div>
-        <p className="contact-email" style={{ marginTop: "1rem" }}>
-          {contact.email}
-        </p>
+        <div className="contact-email-section" style={{ marginTop: "1rem" }}>
+          <p style={{ fontSize: "0.95rem", color: "var(--text-secondary)", marginBottom: "0.5rem" }}>
+            Or email directly:
+          </p>
+          <a
+            href="mailto:vaishnavishrivastava41@gmail.com"
+            className="contact-email-link"
+          >
+            <Mail size={18} />
+            <span>vaishnavishrivastava41@gmail.com</span>
+          </a>
+        </div>
       </section>
     </main>
   );

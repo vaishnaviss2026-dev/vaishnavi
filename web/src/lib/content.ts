@@ -70,7 +70,8 @@ export const defaultContent: SiteContent = {
     { name: "After Effects", iconSlug: "aftereffects", color: "#CF96FD" },
     { name: "Photoshop", iconSlug: "photoshop", color: "#31A8FF" },
     { name: "ChatGPT", iconSlug: "chatgpt", color: "#74AA9C" },
-    { name: "Higgsfield AI", iconSlug: "higgsfield", color: "#FF6B2C" },
+    { name: "Claude", iconSlug: "claude", color: "#D97757" },
+    { name: "Higgsfield AI", iconSlug: "higgsfield", color: "#D1FE17" },
     { name: "Runway", iconSlug: "runway", color: "#ffffff" },
     { name: "Canva", iconSlug: "canva", color: "#00C4CC" },
   ],
@@ -78,7 +79,7 @@ export const defaultContent: SiteContent = {
     heading: "Ready to",
     highlight: "create?",
     lead: "",
-    email: "vaishaviss2026@gmail.com",
+    email: "vaishnavishrivastava41@gmail.com",
     whatsapp: "919981783744",
     calLink: "",
   },
@@ -253,21 +254,31 @@ export async function getContent(): Promise<SiteContent> {
       body: settings?.aboutBody || d.about.body,
       imageUrl: safeImageUrl(settings?.aboutImage) ?? d.about.imageUrl,
     },
-    tools:
-      settings?.tools && settings.tools.length
-        ? settings.tools.map((t) => ({
-            name: t.name || "",
-            iconSlug: t.iconSlug || "",
-            color: t.color || "#ffffff",
-          }))
-        : d.tools,
+    tools: (() => {
+      const list =
+        settings?.tools && settings.tools.length
+          ? settings.tools.map((t) => ({
+              name: t.name || "",
+              iconSlug: t.iconSlug || "",
+              color: t.color || "#ffffff",
+            }))
+          : [...d.tools];
+      // Guarantee Claude is always included in tools
+      const hasClaude = list.some(
+        (t) => (t.iconSlug || t.name || "").toLowerCase().includes("claud")
+      );
+      if (!hasClaude) {
+        list.splice(4, 0, { name: "Claude", iconSlug: "claude", color: "#D97757" });
+      }
+      return list;
+    })(),
     contact: {
       heading: settings?.contactHeading || d.contact.heading,
       highlight: settings?.contactHighlight || d.contact.highlight,
       lead: settings?.contactLead ?? d.contact.lead,
-      email: settings?.email || d.contact.email,
+      email: "vaishnavishrivastava41@gmail.com",
       whatsapp: settings?.whatsapp || d.contact.whatsapp,
-      calLink: settings?.calLink || d.contact.calLink,
+      calLink: "",
     },
     projects: anyProjects ? grouped : d.projects,
   };

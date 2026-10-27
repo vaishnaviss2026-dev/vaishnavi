@@ -48,13 +48,14 @@ export const siteSettings = defineType({
               title: "Icon",
               type: "string",
               description:
-                "Brand icon slug. Known: premierepro, aftereffects, photoshop, chatgpt, runway, canva, higgsfield.",
+                "Brand icon slug. Known: premierepro, aftereffects, photoshop, chatgpt, claude, runway, canva, higgsfield.",
               options: {
                 list: [
                   { title: "Premiere Pro", value: "premierepro" },
                   { title: "After Effects", value: "aftereffects" },
                   { title: "Photoshop", value: "photoshop" },
                   { title: "ChatGPT", value: "chatgpt" },
+                  { title: "Claude", value: "claude" },
                   { title: "Higgsfield AI", value: "higgsfield" },
                   { title: "Runway", value: "runway" },
                   { title: "Canva", value: "canva" },

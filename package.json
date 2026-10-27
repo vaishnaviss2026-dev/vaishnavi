@@ -4,6 +4,7 @@
   "private": true,
   "description": "Vaishnavi Shrivastava portfolio — Next.js frontend (web/) + standalone Sanity Studio (studio/)",
   "scripts": {
+    "dev": "npm --prefix web run dev",
     "dev:web": "npm --prefix web run dev",
     "dev:studio": "npm --prefix studio run dev",
     "build:web": "npm --prefix web run build",
